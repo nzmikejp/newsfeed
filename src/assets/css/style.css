@@ -1,12 +1,23 @@
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,900;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
   list-style-type: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+h1 {
+  color: #F7F6FF;
+  font-weight: 700;
+  font-size: 1.18em;
+}
+
+p {
+  color: #B4B4C0;
+  font-size: 0.75em;
 }
 
 body {
@@ -34,6 +45,8 @@ header .header-content {
           align-items: center;
   padding: 1em;
   position: relative;
+  -webkit-box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
 }
 
 header:before {
@@ -47,6 +60,8 @@ header:before {
   width: 90%;
   height: 1.25em;
   background-color: #7F7E96;
+  -webkit-box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
 }
 
 header:after {
@@ -60,7 +75,9 @@ header:after {
   width: 80%;
   height: 1.25em;
   background-color: #F7F6FF;
-  z-index: -2;
+  z-index: -1;
+  -webkit-box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.2);
 }
 
 header .logo img {
@@ -91,28 +108,12 @@ header .logo img {
 .form-group input {
   background-color: transparent;
   border: none;
-  font-size: 0.875;
+  font-size: 0.875em;
   font-weight: 300;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-  margin-left: 0.5em;
-}
-
-.form-group input::-webkit-input-placeholder {
-  font-size: 0.875;
-}
-
-.form-group input:-ms-input-placeholder {
-  font-size: 0.875;
-}
-
-.form-group input::-ms-input-placeholder {
-  font-size: 0.875;
-}
-
-.form-group input::placeholder {
-  font-size: 0.875;
+  margin-left: 0.8em;
 }
 
 .form-group input:focus {
@@ -120,7 +121,7 @@ header .logo img {
 }
 
 .form-group .btn {
-  width: 1.7em;
+  width: 1.77em;
   height: 1.7em;
   background-color: #7F7E96;
   display: -webkit-box;
@@ -158,9 +159,65 @@ header .logo img {
           flex-direction: column;
 }
 
-.feature-article img {
-  width: 88%;
+.feature-article .feature-image {
   margin-top: -1.25em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+}
+
+.feature-article .feature-image img {
+  width: 88%;
   border-radius: 0 0 0 0.625em;
+}
+
+.feature-article .feature-date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #404051;
+  margin: 0;
+  width: 9.5rem;
+  font-size: 0.5em;
+  padding: 0.5em 1em;
+  border-radius: 0.7em 0 0 0;
+  color: #F7F6FF;
+}
+
+.feature-article .feature-date span {
+  font-weight: 900;
+}
+
+.feature-article h1 {
+  width: 88%;
+  padding-right: 2em;
+  margin-top: 1em;
+}
+
+.feature-article p {
+  width: 88%;
+  padding-right: 2em;
+}
+
+.feature-article .btn-more {
+  background-color: #1C1D21;
+  color: #B4B4C0;
+  border: 0.1em #B4B4C0 solid;
+  border-radius: 1.5em;
+  padding: 0.4em 1em;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-left: 12%;
+}
+
+.feature-article .btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,6 @@
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,900;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,900&display=swap');
 
 $light-color: #F7F6FF;
 $light-gray: #B4B4C0;
@@ -10,11 +10,12 @@ $bg-color: #1C1D21;
 
 $primary-font: 'Roboto', sans-serif;
 $font-weight-black: 900;
+$font-weight-bold: 700;
 $font-weight-medium: 400;
 $font-weight-light: 300;
 
 $r-large: 0.625em;
-$r-small: 0.625em;
+
 
 
 * {
@@ -22,6 +23,17 @@ $r-small: 0.625em;
     padding: 0;
     list-style-type: none;
     box-sizing: border-box;
+}
+
+h1 {
+    color: $light-color;
+    font-weight: $font-weight-bold;
+    font-size: 1.18em;
+}
+
+p {
+    color: $light-gray;
+    font-size: 0.75em;
 }
 
 body {
@@ -42,6 +54,7 @@ header {
     align-items: center;
     padding: 1em;
     position: relative;
+    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.2);
 
   }
 
@@ -55,6 +68,7 @@ header {
     width: 90%;
     height: 1.25em;
     background-color: $mid-gray;
+    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.2);
   }
  
   &:after {
@@ -67,7 +81,8 @@ header {
     width: 80%;
     height: 1.25em;
     background-color: $light-color;
-    z-index: -2;
+    z-index: -1;
+    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.2);
   }
 
   .logo {
@@ -94,14 +109,10 @@ header {
   input {
     background-color: transparent;
     border: none;
-    font-size: 0.875;
+    font-size: 0.875em;
     font-weight: $font-weight-light;
     flex: 1 0 auto;
-    margin-left: 0.5em;
-
-    &::placeholder {
-      font-size: 0.875;
-    }
+    margin-left: 0.8em;
 
     &:focus {
       outline: none;
@@ -109,7 +120,7 @@ header {
   }
 
   .btn {
-    width: 1.7em;
+    width: 1.77em;
     height: 1.7em;
     background-color: $mid-gray;
     display: flex;
@@ -134,9 +145,61 @@ header {
   align-items: flex-end;
   flex-direction: column;
   
-  img {
-    width: 88%;
-    margin-top: -1.25em;
-    border-radius: 0 0 0 $r-large;
+  .feature-image {
+      margin-top: -1.25em;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      
+      img{
+          width: 88%;
+          border-radius: 0 0 0 $r-large;
+      }
+  }
+
+  .feature-date {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: $dark-gray;
+    margin: 0;
+    width: 9.5rem;
+    font-size: 0.5em;
+    padding: 0.5em 1em;
+    border-radius: 0.7em 0 0 0;
+    color: $light-color;
+
+    span {
+        font-weight: $font-weight-black;
+    }
+  }
+
+  h1 {
+      width: 88%;
+      padding-right: 2em;
+      margin-top: 1em;
+  }
+
+  p {
+      width: 88%;
+      padding-right: 2em;
+  }
+
+  .btn-more {
+      background-color: $bg-color;
+      color: $light-gray;
+      border: 0.1em $light-gray solid;
+      border-radius: 1.5em;
+      padding: 0.4em 1em;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-left: 12%;
+  }
+
+  .btn {
+      &:focus {
+          box-shadow: none;
+      }
   }
 }
