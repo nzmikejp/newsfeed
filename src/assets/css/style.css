@@ -1,67 +1,166 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,900;1,900&display=swap");
 * {
   margin: 0;
   padding: 0;
+  list-style-type: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.App {
-  text-align: center;
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #1C1D21;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  z-index: 80;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    -webkit-animation: App-logo-spin infinite 20s linear;
-            animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header .header-content {
+  background-color: #404051;
+  border-radius: 0 0 1.25em 1.25em;
+  min-height: 6em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+  position: relative;
+}
+
+header:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 40%);
+          transform: translate(-50%, 40%);
+  border-radius: 0 0 1.25em 1.25em;
+  width: 90%;
+  height: 1.25em;
+  background-color: #7F7E96;
+}
+
+header:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 80%);
+          transform: translate(-50%, 80%);
+  border-radius: 0 0 1.25em 1.25em;
+  width: 80%;
+  height: 1.25em;
+  background-color: #F7F6FF;
+  z-index: -2;
+}
+
+header .logo img {
+  display: block;
+  width: 5em;
+}
+
+.search {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  margin-right: 1em;
+}
+
+.form-group {
+  border-radius: 1em;
+  background-color: #F7F6FF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.2em;
+  margin: 0;
+}
+
+.form-group input {
+  background-color: transparent;
+  border: none;
+  font-size: 0.875;
+  font-weight: 300;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  margin-left: 0.5em;
+}
+
+.form-group input::-webkit-input-placeholder {
+  font-size: 0.875;
+}
+
+.form-group input:-ms-input-placeholder {
+  font-size: 0.875;
+}
+
+.form-group input::-ms-input-placeholder {
+  font-size: 0.875;
+}
+
+.form-group input::placeholder {
+  font-size: 0.875;
+}
+
+.form-group input:focus {
+  outline: none;
+}
+
+.form-group .btn {
+  width: 1.7em;
+  height: 1.7em;
+  background-color: #7F7E96;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+}
+
+.form-group .btn button {
+  background-color: transparent;
+  border: none;
+}
+
+.form-group .btn button i {
+  color: #F7F6FF;
+  font-size: 0.8em;
+}
+
+.feature-article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@-webkit-keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+.feature-article img {
+  width: 88%;
+  margin-top: -1.25em;
+  border-radius: 0 0 0 0.625em;
 }
 /*# sourceMappingURL=style.css.map */
