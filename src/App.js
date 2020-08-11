@@ -89,7 +89,31 @@ class App extends Component {
               <a href={this.state.articles[0].url} className="btn btn-more" target="_blank">Read more</a>
             </div>
           </section>
-          <section className="category-news"></section>
+          <section className="category-news">
+            <Tabs defaultActiveKey="world" id="tabs">
+              <Tab eventKey="world" title="World">
+                <div className="category-article">
+                  <div className="article-content">
+                    <h1>{this.state.articles[0].title}</h1>
+                    <p>{this.state.articles[0].description}</p>
+                    <a href={this.state.articles[0].url} className="btn btn-more" target="_blank">Read more</a>
+                  </div>
+                  <div className="article-image">
+                    <img src={this.state.articles[0].image} alt=""/>
+                  </div>
+                </div>
+              </Tab>
+              <Tab eventKey="nation" title="Nation">
+                
+              </Tab>
+              <Tab eventKey="business" title="Business">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut suscipit placeat illum iste pariatur, perspiciatis expedita itaque hic aperiam eum laudantium consequuntur numquam, corrupti labore quaerat ipsam a, amet praesentium fugiat necessitatibus natus. Harum corporis fugit, culpa amet atque iure dolorum voluptatum iusto illo quae, consectetur ratione optio dignissimos aliquam!</p>
+              </Tab>
+              <Tab eventKey="technology" title="Technology">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut suscipit placeat illum iste pariatur, perspiciatis expedita itaque hic aperiam eum laudantium consequuntur numquam, corrupti labore quaerat ipsam a, amet praesentium fugiat necessitatibus natus. Harum corporis fugit, culpa amet atque iure dolorum voluptatum iusto illo quae, consectetur ratione optio dignissimos aliquam!</p>
+              </Tab>
+            </Tabs>
+          </section>
         </main>
       </div>
     )

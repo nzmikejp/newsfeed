@@ -16,8 +16,6 @@ $font-weight-light: 300;
 
 $r-large: 0.625em;
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +36,13 @@ p {
 
 body {
   font-family: $primary-font;
-  background-color: $bg-color;
+}
+
+.wrap {
+    background-color: $bg-color;
+    background-image: linear-gradient($bg-color 50%, $dark-gray 100%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 header {
@@ -54,7 +58,6 @@ header {
     align-items: center;
     padding: 1em;
     position: relative;
-    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.2);
 
   }
 
@@ -68,7 +71,6 @@ header {
     width: 90%;
     height: 1.25em;
     background-color: $mid-gray;
-    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.2);
   }
  
   &:after {
@@ -82,7 +84,6 @@ header {
     height: 1.25em;
     background-color: $light-color;
     z-index: -1;
-    box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.2);
   }
 
   .logo {
@@ -203,3 +204,94 @@ header {
       }
   }
 }
+
+.category-news {
+    margin-top: 1.5em;
+}
+
+.nav-tabs {
+    border-bottom: none;
+    
+    .nav-link {
+        color: $light-color;
+        text-transform: uppercase;
+        padding: 1.2em 1.5em;
+        flex: 1 0 10%;
+        background-color: darken($dark-gray, 7%);
+        border: none;
+        border-top-left-radius: 0.4rem;
+        border-top-right-radius: 0.4rem;
+        font-size: 0.7em;
+        text-align: center;
+
+    }
+    
+    .nav-link:not(:last-child) {
+        margin-right: 0.15em;
+    }
+
+    .nav-link.active {
+        background-color: $dark-gray;
+        border: none;
+        color: $light-color;
+    }
+}
+
+.tab-pane {
+    background-image: linear-gradient($dark-gray 0%, $bg-color 100%);
+    min-height: 80vmin;
+    padding-top: 1.5em;
+    position: relative;
+    z-index: 10;
+
+}
+
+.category-article {
+    display: flex;
+    border-bottom: thin $dark-gray solid;
+    
+    .article-content {
+        flex: 1 0 50%;
+        padding: 0 1em 1em 1em;
+
+        h1 {
+            font-size: 0.7em;
+        }
+
+        p {
+            font-size: 0.55em;
+            line-height: 1.3;
+            margin-bottom: 1em;
+        }
+
+        .btn-more {
+            background-color: transparent;
+            color: $light-gray;
+            border: 0.1em $light-gray solid;
+            border-radius: 1.5em;
+            padding: 0.4em 1em;
+            font-size: 0.6em;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+      
+        .btn {
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .article-image {
+        flex: 0 0 9.25em;
+        
+        img {
+            display: block;
+            width: 100%;
+            border-radius: $r-large 0 0 $r-large;
+        }
+    }
+}
+
+
+
