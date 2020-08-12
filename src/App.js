@@ -3,56 +3,98 @@ import logo from './assets/images/logo.svg'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import './assets/css/style.css'
+import CategoryArticle from './CategoryArticle'
+import FeatureArticle from './FeatureArticle'
 
 //NewsAPI: https://gnews.io/docs/v3#news-from-topic
-var token = 'ae98dd086fefbd7e495898bb6f482e8d'
+var token = 'c6bded52983277fbbff7947c51883152'
 
 class App extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      articles: [
+      articlesWorld: [],
+      articlesNation: [],
+      articlesBusiness: [],
+      articlesTechnology: [],
+      articlesSearch: [
         {
-          id: 1,
-          title: "COVID-19 testing 'very likely' when Royal Caribbean returns to cruising, executive says",
-          description: "Royal Caribbean Group is set to begin COVID-19 testing on its ships when cruise operations return, according to an executive.",
-          publishedAt: "2020-08-10 18:14:00 UTC",
-          image: "https://images.gnews.io/295c2711204e9f904b3727bf50af4c32",
-          url: "https://www.thestreet.com"
+          id: Date.now(),
+          title: "Oil edges higher on upbeat Aramco",
+          description: "JOHANNESBURG: Sasol Ltd says it will swing to a full-year loss per share after writedowns on US chemical assets contributed to 112 billion rand (US$6.3bil) of charges and oil prices declined.",
+          url: "https://www.thestar.com.my/business/business-news/2020/08/12/oil-edges-higher-on-upbeat-aramco",
+          publishedAt: "2020-08-11 17:38:00 UTC",
+          image: "https://images.gnews.io/b1e59929d8b52f1b05607db92c91935a",
         }
-      ]
+      ],
+      searchTerm: ''
     }
   }
 
-  loadArticlesByTopic = (topic) => {
-    var url = 'https://gnews.io/api/v3/topics/'+topic+'?token='+token
-    fetch(url)
-      .then(res => res.json())
-      .then((data) => {
-        var articles = data.articles
-        console.log(articles)
-      })
-  }
-
   loadArticlesByTerm = (term) => {
-
     var url = 'https://gnews.io/api/v3/search?q='+term+'&token='+token
     fetch(url)
       .then(res => res.json())
       .then((data) => {
         var articles = data.articles
-        console.log(articles)
+
+        if(term === 'world'){
+          this.setState({
+            articlesWorld: articles
+          })
+        }else if(term === 'nation'){
+          this.setState({
+            articlesNation: articles
+          })
+        }else if(term === 'business'){
+          this.setState({
+            articlesBusiness: articles
+          })
+        }else if(term === 'technology'){
+          this.setState({
+            articlesTechnology: articles
+          })
+        }
+      })
+  }
+  
+  loadArticlesBySearch = (term) => {
+    var url = 'https://gnews.io/api/v3/search?q='+term+'&token='+token
+    fetch(url)
+      .then(res => res.json())
+      .then((data) => {
+        var articles = data.articles
+        this.setState({
+          articlesSearch: articles
+        })
       })
   }
 
-  // componentDidMount(){
-  //   this.loadArticlesByTopic
-  // }
+  handleSearchInput = (e) => {
+    this.setState({
+      searchTerm: e.target.value
+    })
+  }
+
+  handleSearchClick = (e) => {
+    e.preventDefault()
+    var target = this.state.searchTerm
+    this.loadArticlesBySearch(target)
+
+    this.setState({
+      searchTerm: ''
+    })
+  }
+
+
   
-  // componentDidMount(){
-  //   this.loadArticlesByTerm
-  // }
+  componentDidMount(){
+    this.loadArticlesByTerm('world')
+    this.loadArticlesByTerm('nation')
+    this.loadArticlesByTerm('business')
+    this.loadArticlesByTerm('technology')
+  }
 
 
 
@@ -65,9 +107,9 @@ class App extends Component {
             <div className="search">
               <form action="#">
                 <div className="form-group">
-                  <input type="text" id="search" placeholder="Type your topic here"/>
+                  <input type="text" id="search" placeholder="Type your topic here" onChange={this.handleSearchInput} value={this.state.searchTerm}/>
                   <div className="btn">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <button type="submit" onClick={this.handleSearchClick}><i class="fas fa-search"></i></button>
                   </div>
                 </div>
               </form>
@@ -79,38 +121,83 @@ class App extends Component {
         </header>
         <main>
           <section className="top-news">
-            <div className="feature-article">
-              <div className="feature-image">
-                <img src={this.state.articles[0].image} alt=""/>
-                <p className="feature-date"><span>Published: </span>{this.state.articles[0].publishedAt}</p>
-              </div>
-              <h1>{this.state.articles[0].title}</h1>
-              <p>{this.state.articles[0].description}</p>
-              <a href={this.state.articles[0].url} className="btn btn-more" target="_blank">Read more</a>
+            <div className="feature-article-wrap">
+              {
+                this.state.articlesSearch.map(article => {
+                  var props = {
+                    key: article.id,
+                    loadArticlesBySearch: this.loadArticlesBySearch,
+                    ...article
+                  }
+  
+                  return (
+                    <FeatureArticle {...props} />
+                  )
+                })
+              }
             </div>
           </section>
           <section className="category-news">
             <Tabs defaultActiveKey="world" id="tabs">
               <Tab eventKey="world" title="World">
-                <div className="category-article">
-                  <div className="article-content">
-                    <h1>{this.state.articles[0].title}</h1>
-                    <p>{this.state.articles[0].description}</p>
-                    <a href={this.state.articles[0].url} className="btn btn-more" target="_blank">Read more</a>
-                  </div>
-                  <div className="article-image">
-                    <img src={this.state.articles[0].image} alt=""/>
-                  </div>
-                </div>
+                {
+                  this.state.articlesWorld.map(article => {
+                    var props = {
+                      key: article.id,
+                      loadArticlesByTerm: this.loadArticlesByTerm,
+                      ...article
+                    }
+
+                    return (
+                      <CategoryArticle {...props} />
+                    )
+                  })
+                }
               </Tab>
               <Tab eventKey="nation" title="Nation">
-                
+                {
+                  this.state.articlesNation.map(article => {
+                    var props = {
+                      key: article.id,
+                      loadArticlesByTerm: this.loadArticlesByTerm,
+                      ...article
+                    }
+
+                    return (
+                      <CategoryArticle {...props} />
+                    )
+                  })
+                }
               </Tab>
               <Tab eventKey="business" title="Business">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut suscipit placeat illum iste pariatur, perspiciatis expedita itaque hic aperiam eum laudantium consequuntur numquam, corrupti labore quaerat ipsam a, amet praesentium fugiat necessitatibus natus. Harum corporis fugit, culpa amet atque iure dolorum voluptatum iusto illo quae, consectetur ratione optio dignissimos aliquam!</p>
+                {
+                  this.state.articlesBusiness.map(article => {
+                    var props = {
+                      key: article.id,
+                      loadArticlesByTerm: this.loadArticlesByTerm,
+                      ...article
+                    }
+
+                    return (
+                      <CategoryArticle {...props} />
+                    )
+                  })
+                }
               </Tab>
               <Tab eventKey="technology" title="Technology">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut suscipit placeat illum iste pariatur, perspiciatis expedita itaque hic aperiam eum laudantium consequuntur numquam, corrupti labore quaerat ipsam a, amet praesentium fugiat necessitatibus natus. Harum corporis fugit, culpa amet atque iure dolorum voluptatum iusto illo quae, consectetur ratione optio dignissimos aliquam!</p>
+                {
+                  this.state.articlesTechnology.map(article => {
+                    var props = {
+                      key: article.id,
+                      loadArticlesByTerm: this.loadArticlesByTerm,
+                      ...article
+                    }
+
+                    return (
+                      <CategoryArticle {...props} />
+                    )
+                  })
+                }
               </Tab>
             </Tabs>
           </section>

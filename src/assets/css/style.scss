@@ -32,6 +32,7 @@ h1 {
 p {
     color: $light-gray;
     font-size: 0.75em;
+    line-height: 1.3;
 }
 
 body {
@@ -141,20 +142,32 @@ header {
   }
 }
 
+.feature-article-wrap {
+  display: flex;
+  overflow: auto;
+  width: 100vw;
+  min-height: 40vh;
+  padding-bottom: 1.5em;
+}
+
 .feature-article {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+  flex: 0 0 100%;
   
   .feature-image {
-      margin-top: -1.25em;
       display: flex;
       justify-content: flex-end;
       position: relative;
+      width: 20.5625em;
+      height: 11.5625em;
+      overflow: hidden;
+      border-radius: 0 0 0 $r-large;
+      background-color: $dark-gray;
       
       img{
-          width: 88%;
-          border-radius: 0 0 0 $r-large;
+          width: 100%;
       }
   }
 
@@ -205,9 +218,6 @@ header {
   }
 }
 
-.category-news {
-    margin-top: 1.5em;
-}
 
 .nav-tabs {
     border-bottom: none;
@@ -240,7 +250,7 @@ header {
 .tab-pane {
     background-image: linear-gradient($dark-gray 0%, $bg-color 100%);
     min-height: 80vmin;
-    padding-top: 1.5em;
+    padding-top: 0.5em;
     position: relative;
     z-index: 10;
 
@@ -248,7 +258,8 @@ header {
 
 .category-article {
     display: flex;
-    border-bottom: thin $dark-gray solid;
+    border-bottom: thin darken($mid-gray, 20%) solid;
+    padding-top: 1em;
     
     .article-content {
         flex: 1 0 50%;
@@ -260,7 +271,6 @@ header {
 
         p {
             font-size: 0.55em;
-            line-height: 1.3;
             margin-bottom: 1em;
         }
 
