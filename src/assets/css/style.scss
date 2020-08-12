@@ -47,8 +47,12 @@ body {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 80;
-  position: relative;
+
   
   .header-content{
     background-color: $dark-gray;
@@ -72,6 +76,7 @@ header {
     width: 90%;
     height: 1.25em;
     background-color: $mid-gray;
+    opacity: 0.7;
   }
  
   &:after {
@@ -85,6 +90,7 @@ header {
     height: 1.25em;
     background-color: $light-color;
     z-index: -1;
+    opacity: 0.2;
   }
 
   .logo {
@@ -134,12 +140,20 @@ header {
       background-color: transparent;
       border: none;
 
+      &:focus {
+        outline: none;
+      }
+
       i {
         color: $light-color;
         font-size: 0.8em;
       }
     }
   }
+}
+
+.top-news {
+  margin-top: 5em;
 }
 
 .feature-article-wrap {
@@ -159,6 +173,7 @@ header {
   .feature-image {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
       position: relative;
       width: 20.5625em;
       height: 11.5625em;
@@ -167,7 +182,7 @@ header {
       background-color: $dark-gray;
       
       img{
-          width: 100%;
+          width: 100vmin;
       }
   }
 
@@ -294,11 +309,12 @@ header {
 
     .article-image {
         flex: 0 0 9.25em;
+        padding-bottom: 1em;
         
         img {
-            display: block;
-            width: 100%;
-            border-radius: $r-large 0 0 $r-large;
+          display: block;
+          width: 100%;
+          border-radius: $r-large 0 0 $r-large;
         }
     }
 }

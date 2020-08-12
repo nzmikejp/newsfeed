@@ -1,4 +1,5 @@
 import React, { Component} from 'react'
+import fallbackSmall from './assets/images/fallback-small.svg'
 
 class CategoryArticle extends Component {
    
@@ -12,7 +13,7 @@ class CategoryArticle extends Component {
                     <a href={this.props.url} className="btn btn-more" target="_blank" rel="noopener noreferrer">Read more</a>
                 </div>
                 <div className="article-image">
-                    <img src={this.props.image} alt="" />
+                    <img src={this.props.image ? this.props.image : fallbackSmall} alt="" />
                 </div>
             </div>
         )

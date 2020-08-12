@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import fallbackImage from './assets/images/fallback-image.svg'
 
 class FeatureArticle extends Component {
 
@@ -7,7 +8,7 @@ class FeatureArticle extends Component {
         return (
             <div className="feature-article" key={this.props.id}>
                 <div className="feature-image">
-                    <img src={this.props.image} alt=""/>
+                    <img src={this.props.image ? this.props.image : fallbackImage} alt=""/>
                     <p className="feature-date"><span>Published: </span>{this.props.publishedAt}</p>
                 </div>
                 <h1>{this.props.title}</h1>

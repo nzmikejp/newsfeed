@@ -7,7 +7,7 @@ import CategoryArticle from './CategoryArticle'
 import FeatureArticle from './FeatureArticle'
 
 //NewsAPI: https://gnews.io/docs/v3#news-from-topic
-var token = 'c6bded52983277fbbff7947c51883152'
+var token = 'da265d22f6221336a12144468761c712'
 
 class App extends Component {
   constructor(props){
@@ -32,44 +32,21 @@ class App extends Component {
     }
   }
 
-  loadArticlesByTerm = (term) => {
+  loadArticlesByTerm = (term,type) => {
     var url = 'https://gnews.io/api/v3/search?q='+term+'&token='+token
     fetch(url)
       .then(res => res.json())
       .then((data) => {
         var articles = data.articles
 
-        if(term === 'world'){
-          this.setState({
-            articlesWorld: articles
-          })
-        }else if(term === 'nation'){
-          this.setState({
-            articlesNation: articles
-          })
-        }else if(term === 'business'){
-          this.setState({
-            articlesBusiness: articles
-          })
-        }else if(term === 'technology'){
-          this.setState({
-            articlesTechnology: articles
-          })
-        }
+        var stateData = {}
+        stateData['articles'+type] = articles
+
+        this.setState(stateData)
+
       })
   }
   
-  loadArticlesBySearch = (term) => {
-    var url = 'https://gnews.io/api/v3/search?q='+term+'&token='+token
-    fetch(url)
-      .then(res => res.json())
-      .then((data) => {
-        var articles = data.articles
-        this.setState({
-          articlesSearch: articles
-        })
-      })
-  }
 
   handleSearchInput = (e) => {
     this.setState({
@@ -80,7 +57,7 @@ class App extends Component {
   handleSearchClick = (e) => {
     e.preventDefault()
     var target = this.state.searchTerm
-    this.loadArticlesBySearch(target)
+    this.loadArticlesByTerm(target, 'Search')
 
     this.setState({
       searchTerm: ''
@@ -90,10 +67,10 @@ class App extends Component {
 
   
   componentDidMount(){
-    this.loadArticlesByTerm('world')
-    this.loadArticlesByTerm('nation')
-    this.loadArticlesByTerm('business')
-    this.loadArticlesByTerm('technology')
+    this.loadArticlesByTerm('world', 'World')
+    this.loadArticlesByTerm('new zealand', 'Nation')
+    this.loadArticlesByTerm('business', 'Business')
+    this.loadArticlesByTerm('technology', 'Technology')
   }
 
 
@@ -126,7 +103,7 @@ class App extends Component {
                 this.state.articlesSearch.map(article => {
                   var props = {
                     key: article.id,
-                    loadArticlesBySearch: this.loadArticlesBySearch,
+                    loadArticlesByTerm: this.loadArticlesByTerm,
                     ...article
                   }
   
