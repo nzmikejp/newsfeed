@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import logo from './assets/images/logo.svg'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import './assets/css/style.css'
@@ -115,7 +116,7 @@ class App extends Component {
             </div>
           </section>
           <section className="category-news">
-            <Tabs defaultActiveKey="world" id="tabs">
+            <Tabs defaultActiveKey="nation" id="tabs">
               <Tab eventKey="world" title="World">
                 {
                   this.state.articlesWorld.map(article => {
