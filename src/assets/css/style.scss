@@ -43,13 +43,17 @@ body {
     background-image: linear-gradient($bg-color 50%, $dark-gray 100%);
     background-repeat: no-repeat;
     min-height: 100vh;
+    max-width: 26em;
+    margin: auto;
 }
 
 header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 26em;
   z-index: 80;
 
   
@@ -158,7 +162,6 @@ header {
 .feature-article-wrap {
   display: flex;
   overflow: auto;
-  width: 100vw;
   min-height: 40vh;
   padding-bottom: 1.5em;
 }
