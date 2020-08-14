@@ -258,6 +258,10 @@ header .logo img {
           box-shadow: none;
 }
 
+:focus {
+  outline: none;
+}
+
 .nav-tabs {
   border-bottom: none;
 }

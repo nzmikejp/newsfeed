@@ -235,6 +235,9 @@ header {
   }
 }
 
+:focus {
+  outline: none;
+}
 
 .nav-tabs {
     border-bottom: none;
