@@ -164,6 +164,17 @@ header {
   overflow: auto;
   min-height: 40vh;
   padding-bottom: 1.5em;
+
+  &::-webkit-scrollbar {
+    background-color: darken($dark-gray, 12%);
+    border-radius: 0.5em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-image: linear-gradient($dark-gray 0%, darken($dark-gray, 12%) 100%);
+    border-radius: 0.5em;
+  }
+
 }
 
 .feature-article {
